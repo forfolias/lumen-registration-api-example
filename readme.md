@@ -1,21 +1,41 @@
-# Lumen PHP Framework
+# Basic User Registration REST Example Using Lumen
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+## Requirements
+Make sure you have installed :
+* PHP >= 7.0 (prefer >=7.2)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+You probably have already installed the following required PHP extensions:
+* OpenSSL PHP Extension
+* PDO PHP Extension
+* Mbstring PHP Extension
 
-## Official Documentation
+## Local Setup Instructions
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+### 1. Install required dependencies
+```
+$ composer install
+```
 
-## Security Vulnerabilities
+### 3. Configure project
+Copy `.env.example` to `.env` and edit the project settings.
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### 4. Apply pending database migrations
+```
+$ php artisan migrate
+```
 
-## License
+### 5. Run the application
+Instead of running the application through a web server, you can use the built-in PHP server:
+```
+php -S localhost:5000 -t public
+```
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### 5. Make a test request
+```
+$ curl -X POST http://127.0.0.1:5000/register -F name='Full Name' -F email=email@address.com
+```
+
+## Running Unit tests
+```
+$ phpunit
+```
