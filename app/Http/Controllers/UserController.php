@@ -28,7 +28,12 @@ class UserController extends Controller
 
         $user = User::create($request->all());
 
-        Mail::to(env('REGISTRATION_MAIL_NOTIFY', 'george@vasilakos.com'))->send(new UserRegistration($user));
+        try {
+            Mail::to(env('REGISTRATION_MAIL_NOTIFY', 'george@vasilakos.com'))->send(new UserRegistration($user));
+        }
+        catch (\Exception $e) {
+            // Do nothing
+        }
         return $user;
     }
 }
